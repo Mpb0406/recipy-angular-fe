@@ -1,11 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const User = require('../../Models/User');
-const {
-  check,
-  validationRequest,
-  validationResult,
-} = require("express-validator");
+const User = require("../../Models/User");
+const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const auth = require("../../middleware/auth");
@@ -30,35 +26,16 @@ router.post(
     try {
       // Check if user exists throw error if not
       let user = await User.findOne({ email });
-      if (!user) {
-        return res
-          .status(400)
-          .json({ errors: [{ msg: "Invalid credentials" }] });
+      if (user && (await bcrypt.compare(password, user.password))) {
+        res.status(200).json({
+          _id: user.id,
+          name: user.name,
+          email: user.email,
+          token: generateToken(user._id),
+        });
+      } else {
+        res.status(400).json({ errors: [{ msg: "Invalid Credentials" }] });
       }
-
-      // Compare plain-text password in req with hashed password associated w/ email in req
-      const isMatch = await bcrypt.compare(password, user.password);
-      if (!isMatch) {
-        return res.status(401).json({ errors: [{ msg: "Invalid password" }] });
-      }
-
-      // Create payload for JWT
-      const payload = {
-        user: {
-          id: user.id,
-        },
-      };
-
-      // Sign token with user id payload
-      jwt.sign(
-        payload,
-        process.env.JWT_SECRET,
-        { expiresIn: 3600 },
-        (err, token) => {
-          if (err) throw err;
-          res.json({ token });
-        }
-      );
     } catch (err) {
       console.error(err);
       res.status(500).send("Server Error");
@@ -66,18 +43,23 @@ router.post(
   }
 );
 
-
 //@route    GET api/auth
 //@desc     Get User Info
 //@access   Private
-router.get('/', auth, async (req, res) => {
+router.get("/", auth, async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select('-password');
+    const user = await User.findById(req.user.id).select("-password");
     res.json(user);
   } catch (err) {
     console.error(err);
-    res.status(500).send('Server Error');
+    res.status(500).send("Server Error");
   }
-})
+});
+
+const generateToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET, {
+    expiresIn: "30d",
+  });
+};
 
 module.exports = router;
