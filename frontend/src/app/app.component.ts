@@ -10,8 +10,13 @@ export class AppComponent {
   constructor(private dataService: DataService) {}
   title = 'frontend';
 
-  logUser() {
-    this.dataService.logUser().subscribe((res) => {
+  user = {
+    email: 'mpb0406@gmail.com',
+    password: '123456',
+  };
+
+  login(user: object) {
+    this.dataService.logUser(user).subscribe((res) => {
       console.log(res);
     });
   }

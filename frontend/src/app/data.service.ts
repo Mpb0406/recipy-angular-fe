@@ -17,12 +17,8 @@ export class DataService {
     }),
   };
 
-  logUser() {
+  logUser(data: object) {
     console.log(this.body);
-    return this.http.post(
-      'http://localhost:5000/api/auth',
-      this.body,
-      this.options
-    );
+    return this.http.post('http://localhost:5000/api/auth', data, this.options);
   }
 }
