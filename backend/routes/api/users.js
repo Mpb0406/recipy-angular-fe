@@ -29,42 +29,35 @@ router.post(
     //Inside trycatch check for duplicate user info, assign req info to User model, hash password, return jwt
     try {
       // See if user exists
-      let user = await User.findOne({ email });
-      if (user) {
+      let userExists = await User.findOne({ email });
+      if (userExists) {
         return res
           .status(400)
           .json({ errors: [{ msg: "Email already used" }] });
       }
 
-      //Assign req info to User Model
-      user = new User({
-        name,
-        email,
-        password,
-      });
-
       // Encrypt password
       const salt = await bcrypt.genSalt(10);
-      user.password = await bcrypt.hash(password, salt);
+      hashedPassword = await bcrypt.hash(password, salt);
 
-      await user.save();
+      //Assign req info to User Model
+      const user = await User.create({
+        name,
+        email,
+        password: hashedPassword,
+      });
 
-      // Return JWT
-      const payload = {
-        user: {
-          id: user.id,
-        },
-      };
-
-      jwt.sign(
-        payload,
-        process.env.JWT_SECRET,
-        { expiresIn: 3600 },
-        (err, token) => {
-          if (err) throw err;
-          res.json({ token });
-        }
-      );
+      // Check if user was created
+      if (user) {
+        res.status(201).json({
+          _id: user.id,
+          name: user.name,
+          email: user.email,
+          token: generateToken(user._id),
+        });
+      } else {
+        res.status(400).json({ errors: [{ msg: "Invalid User Data" }] });
+      }
     } catch (err) {
       console.error(err);
       res.status(500).send("Server Error");
@@ -85,5 +78,11 @@ router.delete("/:id", auth, async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
+
+const generateToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET, {
+    expiresIn: "30d",
+  });
+};
 
 module.exports = router;
