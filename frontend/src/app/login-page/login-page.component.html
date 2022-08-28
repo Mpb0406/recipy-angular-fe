@@ -1,8 +1,17 @@
 <section>
-    <h1>Login</h1>
-    <form action="submit">
-        <input type="email" placeholder="Email">
-        <input type="password" placeholder="Password">
-        <button>Login</button>
-    </form>
+  <h1>Login</h1>
+  <form>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" />
+    </mat-form-field>
+    <div class="button-container">
+      <button mat-raised-button color="primary">Login</button>
+      <button mat-button>Create Account</button>
+    </div>
+  </form>
 </section>
