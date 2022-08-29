@@ -1,6 +1,6 @@
 section {
-  height: 100vh;
-  background: lightblue;
+  height: 90vh;
+  background: lightgray;
   display: flex;
   flex-direction: column;
   align-items: center;
