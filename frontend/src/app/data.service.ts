@@ -6,10 +6,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class DataService {
   constructor(private http: HttpClient) {}
-  body = {
-    email: 'mpb0406@gmail.com',
-    password: '123456',
-  };
 
   options = {
     headers: new HttpHeaders({
@@ -18,7 +14,10 @@ export class DataService {
   };
 
   logUser(data: object) {
-    console.log(this.body);
-    return this.http.post('http://localhost:5000/api/auth', data, this.options);
+    return this.http.post(
+      'http://localhost:5000/api/auth',
+      JSON.stringify(data),
+      this.options
+    );
   }
 }
