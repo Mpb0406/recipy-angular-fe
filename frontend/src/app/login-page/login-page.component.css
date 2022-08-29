@@ -8,13 +8,42 @@ section {
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-    margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 35%;
+  height: 60vh;
+  margin: 1rem;
+  background: #fff;
+  padding: 3rem;
+  border-radius: 5px;
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.5);
 }
 
-.button-container {
-    align-self: center;
-    margin-top: 2rem;
+form h1 {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.form-inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-container {
+  display: flex;
+  gap: 5px;
+  align-self: center;
+  margin-top: 2rem;
+}
+
+.register-container a {
+  text-decoration: none;
+  font-weight: bold;
+  color: royalblue;
+  transition: all 0.3s ease;
+}
+
+.register-container a:hover {
+  color: lightblue;
 }

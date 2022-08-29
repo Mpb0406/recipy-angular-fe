@@ -1,17 +1,21 @@
 <section>
-  <h1>Login</h1>
-  <form>
-    <mat-form-field appearance="fill">
-      <mat-label>Email</mat-label>
-      <input matInput type="email" />
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Password</mat-label>
-      <input matInput type="password" />
-    </mat-form-field>
-    <div class="button-container">
-      <button mat-raised-button color="primary">Login</button>
-      <button mat-button>Create Account</button>
+  <form [formGroup]="loginForm">
+    <h1>Login</h1>
+    <div class="form-inputs">
+      <mat-form-field appearance="standard">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" />
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" />
+      </mat-form-field>
     </div>
+    <button mat-raised-button color="primary">Login</button>
+    <div class="register-container">
+      <p>New User?</p>
+      <a href="#">Create An Account</a>
+    </div>
+    <p>{{ loginForm.value | json }}</p>
   </form>
 </section>

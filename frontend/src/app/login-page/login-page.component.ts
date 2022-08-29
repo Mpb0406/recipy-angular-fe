@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-login-page',
@@ -8,6 +8,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 })
 export class LoginPageComponent implements OnInit {
   constructor() {}
+
+  loginForm = new FormGroup({
+    email: new FormControl(''),
+    password: new FormControl(''),
+  });
 
   ngOnInit(): void {}
 }
