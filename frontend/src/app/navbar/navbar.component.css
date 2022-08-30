@@ -1,3 +1,18 @@
 mat-toolbar {
     height: 10vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-hamburger {
+    display: flex;
+    align-items: center;
+}
+
+.menu-links ul {
+    display: flex;
+    list-style: none;
+    cursor: pointer;
+    gap: 1rem;
+    margin-right: 1rem;
 }
