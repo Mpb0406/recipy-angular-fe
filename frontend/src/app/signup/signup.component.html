@@ -1,7 +1,11 @@
 <section>
-  <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
-    <h1>Login</h1>
+  <form [formGroup]="signupForm">
+    <h1>Create Account</h1>
     <div class="form-inputs">
+      <mat-form-field appearance="standard">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" formControlName="name" />
+      </mat-form-field>
       <mat-form-field appearance="standard">
         <mat-label>Email</mat-label>
         <input matInput type="email" formControlName="email" />
@@ -13,10 +17,10 @@
     </div>
     <button mat-raised-button color="primary" type="submit">Login</button>
     <div class="register-container">
-      <p>New User?</p>
-      <a routerLink="/signup">Create An Account</a>
+      <p>Have an account?</p>
+      <a routerLink="/login">Login</a>
     </div>
-    <p>{{ loginForm.value | json }}</p>
+    <p>{{ signupForm.value | json }}</p>
   </form>
 </section>
 <router-outlet></router-outlet>

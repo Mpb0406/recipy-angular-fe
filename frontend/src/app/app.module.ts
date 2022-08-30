@@ -12,9 +12,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MatIconModule } from '@angular/material/icon';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginPageComponent, NavbarComponent],
+  declarations: [AppComponent, LoginPageComponent, NavbarComponent, SignupComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
