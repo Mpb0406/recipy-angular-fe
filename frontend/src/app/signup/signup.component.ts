@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-signup',
@@ -7,7 +8,9 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit {
-  constructor() {}
+  constructor(private dataService: DataService) {}
+
+  ngOnInit(): void {}
 
   signupForm = new FormGroup({
     name: new FormControl(''),
@@ -15,5 +18,9 @@ export class SignupComponent implements OnInit {
     password: new FormControl(''),
   });
 
-  ngOnInit(): void {}
+  register(signupForm: object) {
+    this.dataService.registerUser(signupForm).subscribe((res) => {
+      console.log(res);
+    });
+  }
 }

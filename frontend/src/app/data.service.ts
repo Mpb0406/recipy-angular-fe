@@ -20,4 +20,12 @@ export class DataService {
       this.options
     );
   }
+
+  registerUser(data: object) {
+    return this.http.post(
+      'http://localhost:5000/api/users',
+      JSON.stringify(data),
+      this.options
+    );
+  }
 }
