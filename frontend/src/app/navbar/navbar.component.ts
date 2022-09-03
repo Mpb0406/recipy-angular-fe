@@ -11,6 +11,8 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  isAuthenticated = false;
+
   logOut() {
     localStorage.removeItem('user');
     this.router.navigate(['/login']);

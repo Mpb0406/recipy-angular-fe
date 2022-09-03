@@ -14,9 +14,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { SignupComponent } from './signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginPageComponent, NavbarComponent, SignupComponent, DashboardComponent],
+  declarations: [AppComponent, LoginPageComponent, NavbarComponent, SignupComponent, DashboardComponent, AddRecipeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
