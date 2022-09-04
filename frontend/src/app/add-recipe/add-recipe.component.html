@@ -1,10 +1,10 @@
 <form [formGroup]="recipeForm" action="">
-  <h1>Create New Recipe</h1>
-  <mat-form-field appearance="standard">
+  <h1 class="form-header">Create New Recipe</h1>
+  <mat-form-field class="title" appearance="standard">
     <mat-label>Title*</mat-label>
     <input matInput type="text" formControlName="title" />
   </mat-form-field>
-  <mat-form-field appearance="standard">
+  <mat-form-field class="description" appearance="standard">
     <mat-label>Description</mat-label>
     <textarea
       matInput
@@ -12,29 +12,32 @@
       formControlName="description"
     ></textarea>
   </mat-form-field>
-  <mat-form-field appearance="standard">
-    <mat-label>Yield</mat-label>
-    <input matInput type="number" formControlName="serves" />
-  </mat-form-field>
-  <mat-form-field appearance="standard">
-    <mat-label>Prep Time</mat-label>
-    <input matInput type="number" formControlName="preptime" />
-  </mat-form-field>
-  <mat-form-field appearance="standard">
-    <mat-label>Cook Time</mat-label>
-    <input matInput type="number" formControlName="cooktime" />
-  </mat-form-field>
 
-  <h3>Add Ingredients</h3>
-  <div formArrayName="ingredients">
+  <div class="yield-time-container">
+    <mat-form-field appearance="standard">
+      <mat-label>Yield</mat-label>
+      <input matInput type="number" formControlName="serves" />
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Prep Time</mat-label>
+      <input matInput type="number" formControlName="preptime" />
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Cook Time</mat-label>
+      <input matInput type="number" formControlName="cooktime" />
+    </mat-form-field>
+  </div>
+
+  <h3 class="add-sub-header">Add Ingredients</h3>
+  <div formArrayName="ingredients" class="ingredient-wrapper">
     <div
       *ngFor="
         let ingredient of recipeForm.controls.ingredients.controls;
         let i = index
       "
     >
-      <div [formGroupName]="i">
-        <mat-form-field appearance="standard">
+      <div class="ingredient" [formGroupName]="i">
+        <mat-form-field class="amount" appearance="standard">
           <mat-label>Amt</mat-label>
           <input
             id="ingredient-{{ i }}"
@@ -43,31 +46,37 @@
             formControlName="amount"
           />
         </mat-form-field>
-        <mat-form-field appearance="standard">
+        <mat-form-field class="unit" appearance="standard">
           <mat-label>Unit</mat-label>
           <input matInput type="text" formControlName="unit" />
         </mat-form-field>
-        <mat-form-field appearance="standard">
+        <mat-form-field class="item" appearance="standard">
           <mat-label>Ingredient</mat-label>
           <input matInput type="text" formControlName="item" />
         </mat-form-field>
         <button (click)="removeIngredient(i)">Delete</button>
       </div>
     </div>
-    <button mat-raised-button color="primary" (click)="addIngredient()">
-      Add ingredient
+    <button
+      class="add-ingredient"
+      mat-raised-button
+      color="primary"
+      (click)="addIngredient()"
+    >
+      Add Ingredient
     </button>
   </div>
 
-  <h3>Add Steps</h3>
-  <div formArrayName="procedures">
+  <h3 class="add-sub-header">Add Steps</h3>
+  <div class="steps-wrapper" formArrayName="procedures">
     <div
       *ngFor="
         let step of recipeForm.controls.procedures.controls;
         let i = index
       "
     >
-      <div [formGroupName]="i">
+      <div class="step" [formGroupName]="i">
+        <h4 class="step-number">Step {{ i + 1 }}.</h4>
         <mat-form-field appearance="standard">
           <mat-label>Add Step</mat-label>
           <textarea matInput formControlName="step"></textarea>

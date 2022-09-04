@@ -1,0 +1,76 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-header {
+    margin-top: 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.title, .description {
+    width: 95%;
+}
+
+.yield-time-container {
+    display: flex;
+    gap: 1rem;
+    width: 95%;
+}
+
+.yield-time-container > * {
+    flex-grow: 1;
+}
+
+.add-sub-header {
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin: 2rem;
+    border-bottom: 5px solid #3F51B5 ;
+}
+
+.ingredient-wrapper, .steps-wrapper {
+    width: 95%;
+    text-align: center;
+}
+
+.ingredient {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.amount, .unit {
+    flex-grow: 1;
+}
+
+.item {
+    flex-grow: 6;
+}
+
+.ingredient-wrapper > button, .steps-wrapper > button {
+    margin: 2rem;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.step-number {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #969696;
+}
+
+.step > mat-form-field {
+    flex-grow: 1;
+}
+
+form > button {
+    width: 95%;
+    margin: 2rem 0;
+}
