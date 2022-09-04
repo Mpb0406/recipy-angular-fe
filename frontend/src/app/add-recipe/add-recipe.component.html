@@ -54,7 +54,9 @@
           <mat-label>Ingredient</mat-label>
           <input matInput type="text" formControlName="item" />
         </mat-form-field>
-        <button (click)="removeIngredient(i)">Delete</button>
+        <button mat-button (click)="removeIngredient(i)">
+          <mat-icon fontIcon="delete"></mat-icon>
+        </button>
       </div>
     </div>
     <button
@@ -81,7 +83,9 @@
           <mat-label>Add Step</mat-label>
           <textarea matInput formControlName="step"></textarea>
         </mat-form-field>
-        <button (click)="removeStep(i)">Delete</button>
+        <button mat-button (click)="removeStep(i)">
+          <mat-icon fontIcon="delete"></mat-icon>
+        </button>
       </div>
     </div>
     <button mat-raised-button color="primary" (click)="addStep()">
