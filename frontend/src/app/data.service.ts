@@ -28,4 +28,33 @@ export class DataService {
       this.options
     );
   }
+
+  addRecipe(formData: object, token: string) {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      'http://localhost:5000/api/recipes',
+      JSON.stringify(formData),
+      options
+    );
+  }
+
+  getRecipes(token: string) {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+
+    console.log(token);
+    return this.http.get(
+      'http://localhost:5000/api/recipes/myrecipes',
+      options
+    );
+  }
 }

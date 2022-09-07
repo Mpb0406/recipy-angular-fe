@@ -1,18 +1,25 @@
 const jwt = require("jsonwebtoken");
 
-module.exports = function (req, res, next) {
-  // Get token from header
-  const token = req.header("x-auth-token");
-  if (!token) return res.status(401).json({ errors: "Authorization Denied" });
+module.exports = async function (req, res, next) {
+  let token;
 
-  // Verify Token
-  try {
-    // If token is a valid token then send the token to the req.user
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith("Bearer")
+  ) {
+    try {
+      // Split 'Bearer' and the token and get just the token
+      token = req.headers.authorization.split(" ")[1];
 
-    req.user = decoded.user;
-    next();
-  } catch (err) {
-    res.status(401).json({ msg: "Token is not valid" });
+      // Verify the token
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+      //Find user by token payload and assign to req.user
+      req.user = await User.findById(decoded.id).select("-password");
+
+      next();
+    } catch (err) {
+      res.status(401).json({ msg: "Token is not valid" });
+    }
   }
 };

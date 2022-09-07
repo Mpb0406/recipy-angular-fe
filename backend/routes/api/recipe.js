@@ -3,7 +3,6 @@ const router = express.Router();
 const Recipe = require("../../Models/Recipe");
 const { check, validationResult } = require("express-validator");
 const auth = require("../../middleware/auth");
-const { findById, findOneAndUpdate } = require("../../Models/Recipe");
 
 //@route    POST api/recipes
 //@desc     Post a recipe (title & description) to user account
@@ -15,11 +14,13 @@ router.post(
     [
       check("title", "Recipe title is required").not().isEmpty(),
       check("description", "Recipe description is required").not().isEmpty(),
+      check("ingredients", "ingredients required").not().isEmpty(),
     ],
   ],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) res.status(400).json({ errors: errors.array() });
+    console.log(req);
 
     // Destructure all elements in model
     const {

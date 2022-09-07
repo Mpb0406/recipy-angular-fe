@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+import { DataService } from '../data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-recipe',
@@ -7,24 +9,28 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./add-recipe.component.css'],
 })
 export class AddRecipeComponent implements OnInit {
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private dataService: DataService,
+    private router: Router
+  ) {}
 
   recipeForm = this.fb.group({
-    title: [''],
-    description: [''],
+    title: ['', Validators.required],
+    description: ['', Validators.required],
     serves: [''],
     preptime: [''],
     cooktime: [''],
     ingredients: this.fb.array([
       this.fb.group({
-        amount: this.fb.control(''),
-        unit: this.fb.control(''),
-        item: this.fb.control(''),
+        amount: this.fb.control('', Validators.required),
+        unit: this.fb.control('', Validators.required),
+        item: this.fb.control('', Validators.required),
       }),
     ]),
     procedures: this.fb.array([
       this.fb.group({
-        step: this.fb.control(''),
+        step: this.fb.control('', Validators.required),
       }),
     ]),
   });
@@ -53,6 +59,18 @@ export class AddRecipeComponent implements OnInit {
 
   removeStep(index: number) {
     this.recipeForm.controls.procedures.removeAt(index);
+  }
+
+  submitRecipe() {
+    console.log(this.recipeForm.value);
+
+    const token = JSON.parse(localStorage.getItem('user')!);
+    this.dataService
+      .addRecipe(this.recipeForm.value, token.token)
+      .subscribe((res) => {
+        console.log(res);
+        this.router.navigate(['/dashboard']);
+      });
   }
 
   ngOnInit(): void {}

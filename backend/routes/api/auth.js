@@ -22,10 +22,10 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
 
     const { email, password } = req.body;
+    let user = await User.findOne({ email });
 
     try {
       // Check if user exists throw error if not
-      let user = await User.findOne({ email });
       if (user && (await bcrypt.compare(password, user.password))) {
         res.status(200).json({
           _id: user.id,

@@ -1,7 +1,7 @@
 <form [formGroup]="recipeForm" action="">
   <h1 class="form-header">Create New Recipe</h1>
   <mat-form-field class="title" appearance="standard">
-    <mat-label>Title*</mat-label>
+    <mat-label>Title</mat-label>
     <input matInput type="text" formControlName="title" />
   </mat-form-field>
   <mat-form-field class="description" appearance="standard">
@@ -54,9 +54,9 @@
           <mat-label>Ingredient</mat-label>
           <input matInput type="text" formControlName="item" />
         </mat-form-field>
-        <button mat-button (click)="removeIngredient(i)">
+        <div mat-button (click)="removeIngredient(i)">
           <mat-icon fontIcon="delete"></mat-icon>
-        </button>
+        </div>
       </div>
     </div>
     <button
@@ -83,9 +83,9 @@
           <mat-label>Add Step</mat-label>
           <textarea matInput formControlName="step"></textarea>
         </mat-form-field>
-        <button mat-button (click)="removeStep(i)">
+        <div (click)="removeStep(i)">
           <mat-icon fontIcon="delete"></mat-icon>
-        </button>
+        </div>
       </div>
     </div>
     <button mat-raised-button color="primary" (click)="addStep()">
@@ -93,7 +93,9 @@
     </button>
   </div>
 
-  <button mat-raised-button color="primary">Save</button>
+  <button mat-raised-button color="primary" (click)="submitRecipe()">
+    Save
+  </button>
 
   <p>{{ recipeForm.value | json }}</p>
 </form>

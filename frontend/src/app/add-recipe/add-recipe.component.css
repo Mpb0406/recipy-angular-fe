@@ -70,6 +70,14 @@ form {
     flex-grow: 1;
 }
 
+mat-icon {
+    color: rgb(196, 0, 0);
+}
+
+mat-icon:hover {
+    cursor: pointer;
+}
+
 form > button {
     width: 95%;
     margin: 2rem 0;
