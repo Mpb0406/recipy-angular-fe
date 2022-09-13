@@ -1,0 +1,34 @@
+<section>
+  <div class="recipe-banner">
+    <h1>{{ recipe.title }}</h1>
+    <p>{{ recipe.description }}</p>
+    <div class="time">
+      <mat-icon fontIcon="schedule"></mat-icon>
+      <div class="prep-cook">
+        <p>{{ recipe.title }}</p>
+        <p>{{ recipe.title }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ingredients-container">
+    <h2 class="sub-heading">Ingredients</h2>
+    <div *ngFor="let ingredient of recipe.ingredients" class="ingredient">
+      <p>{{ ingredient.amount }}</p>
+      <p>{{ ingredient.unit }}</p>
+      <p>{{ ingredient.item }}</p>
+    </div>
+  </div>
+  <div class="procedures-container">
+    <h2 class="sub-heading">Procedures</h2>
+    <div
+      *ngFor="let procedure of recipe.procedures; let i = index"
+      class="procedure"
+    >
+      <div>
+        <h3>{{ i + 1 }}</h3>
+      </div>
+      <p>{{ procedure.step }}</p>
+    </div>
+  </div>
+</section>

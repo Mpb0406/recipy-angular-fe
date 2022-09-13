@@ -5,6 +5,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { SignupComponent } from './signup/signup.component';
 import { AuthGuardGuard } from './auth-guard.guard';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
+import { RecipeComponent } from './recipe/recipe.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
     path: 'new-recipe',
     component: AddRecipeComponent,
     canActivate: [AuthGuardGuard],
+  },
+  {
+    path: 'recipe/:recipe',
+    component: RecipeComponent,
   },
 ];
 

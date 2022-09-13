@@ -1,0 +1,9 @@
+mat-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.details-container {
+  margin-left: 0.5rem;
+}

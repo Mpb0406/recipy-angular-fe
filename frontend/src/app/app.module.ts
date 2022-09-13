@@ -15,9 +15,21 @@ import { MatIconModule } from '@angular/material/icon';
 import { SignupComponent } from './signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
+import { RecipeComponent } from './recipe/recipe.component';
+import { RecipeCardComponent } from './recipe-card/recipe-card.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
-  declarations: [AppComponent, LoginPageComponent, NavbarComponent, SignupComponent, DashboardComponent, AddRecipeComponent],
+  declarations: [
+    AppComponent,
+    LoginPageComponent,
+    NavbarComponent,
+    SignupComponent,
+    DashboardComponent,
+    AddRecipeComponent,
+    RecipeComponent,
+    RecipeCardComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -29,6 +41,7 @@ import { AddRecipeComponent } from './add-recipe/add-recipe.component';
     ReactiveFormsModule,
     MatToolbarModule,
     MatIconModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

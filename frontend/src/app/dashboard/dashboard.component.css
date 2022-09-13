@@ -1,0 +1,42 @@
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+section > h1 {
+  text-align: center;
+  margin: 2rem;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.recipe-cards-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1rem;
+  flex-wrap: wrap;
+  width: 95%;
+  margin: auto;
+}
+
+app-recipe-card {
+  margin-top: 1rem;
+  cursor: pointer;
+  flex: 1 0 290px;
+}
+
+app-recipe-card h1 {
+  color: #000;
+  margin: 0;
+}
+
+app-recipe-card p {
+  margin: 0;
+  color: #696969;
+}
+
+.new-recipe-link {
+  margin: 2rem;
+}

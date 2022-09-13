@@ -1,0 +1,126 @@
+section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "recipe-banner recipe-banner"
+    "ingredients procedures";
+}
+
+.recipe-banner {
+  grid-area: recipe-banner;
+  background-color: lightblue;
+  margin: 1rem 1rem 2rem;
+  border-radius: 5px;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.3);
+}
+
+.recipe-banner h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin: 1.5rem;
+}
+
+.recipe-banner p {
+  margin: 0 1.6rem 1rem;
+}
+
+.time {
+  display: flex;
+}
+
+.time p {
+  margin: 0 0 0 0.5rem;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.time mat-icon {
+  font-size: 2.5rem;
+  padding: 0 1rem 2rem 1.5rem;
+}
+
+.ingredients-container {
+  grid-area: ingredients;
+  display: flex;
+  flex-direction: column;
+  margin: 0 1rem;
+  padding: 1rem 3rem;
+}
+
+.procedures-container {
+  grid-area: procedures;
+  display: flex;
+  flex-direction: column;
+  margin: 0 1rem;
+  padding: 1rem 3rem;
+}
+
+.ingredient,
+.procedure {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 1rem 0;
+  position: relative;
+}
+
+.ingredient p,
+.procedure p {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.ingredient::after {
+  content: "";
+  position: absolute;
+  width: 8rem;
+  height: 2px;
+  background-color: rgb(166, 166, 166);
+  top: 100%;
+  left: 10%;
+  transform: translateX(-10%);
+}
+
+.procedure div {
+  margin-right: 1rem;
+  background-color: #3f51b5;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.procedure div h3 {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #fff;
+  margin-bottom: 0;
+}
+
+.sub-heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  position: relative;
+  width: min-content;
+  align-self: center;
+}
+
+.sub-heading::before,
+.sub-heading::after {
+  content: "";
+  position: absolute;
+  width: 5rem;
+  height: 3px;
+  background-color: #3f51b5;
+  top: 50%;
+}
+
+.sub-heading::before {
+  left: -5.5rem;
+}
+
+.sub-heading::after {
+  margin-left: 0.5rem;
+}

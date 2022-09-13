@@ -1,4 +1,27 @@
 <section>
   <h1>My Recipes</h1>
-  <a routerLink="/new-recipe">Add New Recipe</a>
+  <div class="recipe-cards-container">
+    <app-recipe-card
+      [time]="[
+        recipe.cooktime || recipe.preptime
+          ? recipe.cooktime + recipe.preptime
+          : 'N/A '
+      ]"
+      [yield]="[recipe.yield ? recipe.yield : 'N/A ']"
+      *ngFor="let recipe of recipes"
+      [routerLink]="['/recipe/', recipe._id]"
+    >
+      <h1 title>{{ recipe.title }}</h1>
+      <p description>{{ recipe.description }}</p>
+    </app-recipe-card>
+  </div>
+  <button
+    mat-raised-button
+    color="primary"
+    class="new-recipe-link"
+    routerLink="/new-recipe"
+  >
+    Add New Recipe
+  </button>
 </section>
+<router-outlet></router-outlet>
