@@ -19,7 +19,7 @@ export class LoginPageComponent implements OnInit {
   isAuth = true;
 
   ngOnInit(): void {
-    this.isAuthenticated.isAuth.subscribe((message) => (this.isAuth = message));
+    this.isAuthenticated.isAuth.subscribe((res) => (this.isAuth = res));
   }
 
   loginForm = new FormGroup({
@@ -32,7 +32,7 @@ export class LoginPageComponent implements OnInit {
       console.log(res);
       localStorage.setItem('user', JSON.stringify(res));
       this.router.navigate(['/dashboard']);
-      this.isAuthenticated.logOut();
+      this.isAuthenticated.Authenticate();
     });
   }
 }

@@ -7,10 +7,10 @@
   </div>
   <div class="menu-links">
     <ul>
-      <li *ngIf="isAuth" routerLink="/signup">Sign Up</li>
-      <li *ngIf="isAuth" routerLink="/login">Login</li>
-      <li *ngIf="!isAuth" routerLink="/dashboard">Dashboard</li>
-      <li *ngIf="!isAuth" (click)="logOut()">Logout</li>
+      <li *ngIf="!isAuth" routerLink="/signup">Sign Up</li>
+      <li *ngIf="!isAuth" routerLink="/login">Login</li>
+      <li *ngIf="isAuth" routerLink="/dashboard">Dashboard</li>
+      <li *ngIf="isAuth" (click)="logOut()">Logout</li>
     </ul>
   </div>
 </mat-toolbar>

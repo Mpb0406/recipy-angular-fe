@@ -16,12 +16,12 @@ export class NavbarComponent implements OnInit {
   isAuth = true;
 
   ngOnInit(): void {
-    this.isAuthenticated.isAuth.subscribe((message) => (this.isAuth = message));
+    this.isAuthenticated.isAuth.subscribe((res) => (this.isAuth = res));
   }
 
   logOut() {
     localStorage.removeItem('user');
-    this.isAuthenticated.Authenticate();
+    this.isAuthenticated.logOut();
     this.router.navigate(['/login']);
   }
 }

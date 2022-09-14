@@ -124,3 +124,19 @@ section {
 .sub-heading::after {
   margin-left: 0.5rem;
 }
+
+/* Media Queries */
+@media (max-width: 768px) {
+  section {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "recipe-banner"
+      "ingredients"
+      "procedures";
+  }
+
+  .ingredients-container,
+  .procedures-container {
+    align-items: center;
+  }
+}
