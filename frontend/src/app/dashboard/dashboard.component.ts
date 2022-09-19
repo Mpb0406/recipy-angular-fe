@@ -14,7 +14,6 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     const token = JSON.parse(localStorage.getItem('user')!);
     this.dataService.getRecipes(token.token).subscribe((res) => {
-      console.log(res);
       this.recipes = res;
     });
   }

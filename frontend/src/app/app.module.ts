@@ -18,6 +18,7 @@ import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { RecipeCardComponent } from './recipe-card/recipe-card.component';
 import { MatCardModule } from '@angular/material/card';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { MatCardModule } from '@angular/material/card';
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
+    MatSidenavModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

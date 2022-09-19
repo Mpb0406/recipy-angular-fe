@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../data.service';
 
 @Component({
@@ -10,7 +10,8 @@ import { DataService } from '../data.service';
 export class RecipeComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
-    private dataService: DataService
+    private dataService: DataService,
+    private router: Router
   ) {}
 
   recipe: any = [];
@@ -22,6 +23,14 @@ export class RecipeComponent implements OnInit {
         (item: { _id: string | null }) =>
           item._id === this.route.snapshot.paramMap.get('recipe')
       )[0];
+    });
+  }
+
+  removeRecipe() {
+    const token = JSON.parse(localStorage.getItem('user')!);
+    const recipeId = this.route.snapshot.paramMap.get('recipe');
+    this.dataService.deleteRecipe(token.token, recipeId!).subscribe((res) => {
+      this.router.navigate(['/dashboard']);
     });
   }
 }

@@ -51,9 +51,22 @@ export class DataService {
       }),
     };
 
-    console.log(token);
     return this.http.get(
       'http://localhost:5000/api/recipes/myrecipes',
+      options
+    );
+  }
+
+  deleteRecipe(token: string, recipeId: string) {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+
+    return this.http.delete(
+      `http://localhost:5000/api/recipes/${recipeId}`,
       options
     );
   }

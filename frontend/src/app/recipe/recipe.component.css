@@ -24,6 +24,10 @@ section {
   margin: 0 1.6rem 1rem;
 }
 
+.recipe-banner button {
+  align-self: flex-end;
+}
+
 .time {
   display: flex;
 }
