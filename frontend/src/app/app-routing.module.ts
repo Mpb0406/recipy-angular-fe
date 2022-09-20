@@ -9,6 +9,10 @@ import { RecipeComponent } from './recipe/recipe.component';
 
 const routes: Routes = [
   {
+    path: '',
+    component: LoginPageComponent,
+  },
+  {
     path: 'login',
     component: LoginPageComponent,
   },
