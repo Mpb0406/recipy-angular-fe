@@ -4,7 +4,7 @@
   "description": "Recipe App",
   "main": "server.js",
   "scripts": {
-    "server": "node server",
+    "server": "node backend/server",
     "dev": "nodemon backend/server",
     "client": "npm start --prefix frontend",
     "both": "concurrently \"npm run dev\" \"npm run client\""

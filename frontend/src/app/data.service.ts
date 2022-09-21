@@ -13,9 +13,11 @@ export class DataService {
     }),
   };
 
+  api_base_url = 'https://recipy-backend.herokuapp.com';
+
   logUser(data: object) {
     return this.http.post(
-      'http://localhost:5000/api/auth',
+      `${this.api_base_url}/api/auth`,
       JSON.stringify(data),
       this.options
     );
