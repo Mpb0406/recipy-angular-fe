@@ -17,7 +17,7 @@ export class DataService {
 
   logUser(data: object) {
     return this.http.post(
-      `${this.api_base_url}/api/auth`,
+      `https://recipy-backend.herokuapp.com/api/auth`,
       JSON.stringify(data),
       this.options
     );
