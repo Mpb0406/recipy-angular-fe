@@ -17,7 +17,7 @@ export class DataService {
 
   logUser(data: object) {
     return this.http.post(
-      `https://recipy-backend.herokuapp.com/api/auth`,
+      `${this.api_base_url}/api/auth`,
       JSON.stringify(data),
       this.options
     );
@@ -25,7 +25,7 @@ export class DataService {
 
   registerUser(data: object) {
     return this.http.post(
-      'http://localhost:5000/api/users',
+      `${this.api_base_url}/api/users`,
       JSON.stringify(data),
       this.options
     );
@@ -39,7 +39,7 @@ export class DataService {
       }),
     };
     return this.http.post(
-      'http://localhost:5000/api/recipes',
+      `${this.api_base_url}/api/recipes`,
       JSON.stringify(formData),
       options
     );
@@ -53,10 +53,7 @@ export class DataService {
       }),
     };
 
-    return this.http.get(
-      'http://localhost:5000/api/recipes/myrecipes',
-      options
-    );
+    return this.http.get(`${this.api_base_url}/api/recipes/myrecipes`, options);
   }
 
   deleteRecipe(token: string, recipeId: string) {
@@ -68,7 +65,7 @@ export class DataService {
     };
 
     return this.http.delete(
-      `http://localhost:5000/api/recipes/${recipeId}`,
+      `${this.api_base_url}/api/recipes/${recipeId}`,
       options
     );
   }
