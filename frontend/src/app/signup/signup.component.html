@@ -1,5 +1,5 @@
 <section>
-  <form [formGroup]="signupForm">
+  <form [formGroup]="signupForm" (ngSubmit)="register(signupForm)">
     <h1>Create Account</h1>
     <div class="form-inputs">
       <mat-form-field appearance="standard">
@@ -15,7 +15,9 @@
         <input matInput type="password" formControlName="password" />
       </mat-form-field>
     </div>
-    <button mat-raised-button color="primary" type="submit">Login</button>
+    <button mat-raised-button color="primary" type="submit">
+      Create Account
+    </button>
     <div class="register-container">
       <p>Have an account?</p>
       <a routerLink="/login">Login</a>
