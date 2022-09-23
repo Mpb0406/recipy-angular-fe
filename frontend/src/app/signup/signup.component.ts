@@ -24,8 +24,8 @@ export class SignupComponent implements OnInit {
     password: new FormControl(''),
   });
 
-  register(signupForm: object) {
-    this.dataService.registerUser(signupForm).subscribe((res) => {
+  register(signupForm: any) {
+    this.dataService.registerUser(signupForm.value).subscribe((res) => {
       console.log(res);
       localStorage.setItem('user', JSON.stringify(res));
       this.router.navigate(['/dashboard']);
